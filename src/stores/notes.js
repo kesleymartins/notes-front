@@ -15,7 +15,7 @@ export const useNotesStore = defineStore('notes', {
     addNote(newNote) {
       const note = {
         content: newNote.value,
-        background_color: `hsl(${Math.random() * 360}, 100%, 75%)`
+        background_color: `hsl(${Math.random() * 360}, 50%, 75%)`
       }
 
       api.post('/notes', note)
