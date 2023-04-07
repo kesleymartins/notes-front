@@ -2,8 +2,13 @@
 import Note from '../components/Notes/Note.vue'
 import NewNote from '../components/Notes/NewNote.vue'
 import { useNotesStore } from '../stores/notes'
+import { onMounted } from 'vue';
 
 const notesStore = useNotesStore()
+
+onMounted(() => {
+  notesStore.fetchNotes()
+})
 </script>
 
 <template>
