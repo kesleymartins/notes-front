@@ -9,9 +9,19 @@ import { MdDelete } from "oh-vue-icons/icons";
 
 addIcons(MdDelete)
 
+import Toast from "vue-toastification";
+import "vue-toastification/dist/index.css";
+
+const toastOptions = {
+  position: "bottom-right",
+  transition: "Vue-Toastification__fade",
+  newestOnTop: true
+};
+
 const pinia = createPinia()
 const app = createApp(App)
 
 app.use(pinia)
+app.use(Toast, toastOptions)
 app.component("v-icon", OhVueIcon)
 app.mount('#app')
