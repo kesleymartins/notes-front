@@ -39,7 +39,9 @@ main {
 }
 
 .header .title {
-  font-size: 2em;
+  font-size: 3em;
+  font-family: 'Helvetica';
+  font-weight: bolder;
 }
 
 .container {
@@ -71,6 +73,7 @@ main {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 1fr;
   grid-gap: 2em;
+  height: 200px;
 }
 
 @media screen and (max-width : 1000px) {

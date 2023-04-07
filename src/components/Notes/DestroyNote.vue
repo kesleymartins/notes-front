@@ -19,7 +19,7 @@ const onDestroy = () => {
 </template>
 
 <style scoped>
-.bottom .icon {
+.icon {
   cursor: pointer;
 }
 </style>

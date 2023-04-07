@@ -83,8 +83,10 @@ const onAddNote = () => {
 
 /* --- form --- */
 .form textarea {
-  width: 100%;
+  width: 98%;
   resize: none;
+  display: block;
+  margin: 0 auto;
 }
 
 .form .field {

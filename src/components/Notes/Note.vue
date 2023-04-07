@@ -13,19 +13,14 @@ const noteDate = computed(() => {
 
 <template>
   <Card :style="{backgroundColor: note.background_color}">
-    <span>{{ note.content }}</span>
+    <template #header>
 
-    <div class="bottom">
-      <span>{{ noteDate }}</span>
+      <span>{{ note.content }}</span>
+    </template>
 
-      <DestroyNote :note="note"/>
-    </div>
+    <span>{{ noteDate }}</span>
+    <DestroyNote :note="note"/>
   </Card>
 </template>
 
-<style scoped>
-.bottom {
-  display: flex;
-  justify-content: space-between;
-}
-</style>
+<style scoped></style>
