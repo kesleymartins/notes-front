@@ -1,11 +1,13 @@
 <script setup>
 import { ref } from 'vue';
 import Modal from '../Modal.vue'
+import { useToast } from 'vue-toastification'
 import { useNotesStore } from '../../stores/notes'
 
 const showModal = ref(false)
 const newNote = ref('')
 const notesStore = useNotesStore()
+const toast = useToast()
 
 const toggleModal = () => {
   showModal.value = !showModal.value
@@ -15,6 +17,7 @@ const onAddNote = () => {
   notesStore.addNote(newNote)
   toggleModal()
   newNote.value = ""
+  toast.success('Nota criada com sucesso!')
 }
 </script>
 
