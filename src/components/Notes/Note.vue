@@ -5,9 +5,9 @@ const props = defineProps(['note'])
 </script>
 
 <template>
-  <Card :style="{backgroundColor: note.backgroundColor}">
-    <span>{{ note.text }}</span>
-    <span>{{ note.date.toLocaleString('pt-BR') }}</span>
+  <Card :style="{backgroundColor: note.background_color}">
+    <span>{{ note.content }}</span>
+    <span>{{ (new Date(note.created_at)).toLocaleString('pt-BR') }}</span>
   </Card>
 </template>
 
