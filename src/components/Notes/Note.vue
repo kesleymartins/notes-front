@@ -1,9 +1,9 @@
 <script setup>
-import { computed } from '@vue/reactivity';
+import { computed } from '@vue/reactivity'
+import DestroyNote from './DestroyNote.vue'
 import Card from '../Card.vue'
 
 const props = defineProps(['note'])
-const emit = defineEmits(['remove'])
 
 const noteDate = computed(() => {
   const date = new Date(props.note.created_at)
@@ -18,9 +18,7 @@ const noteDate = computed(() => {
     <div class="bottom">
       <span>{{ noteDate }}</span>
 
-      <span class="icon" @click="emit('remove')">
-        <v-icon name="md-delete" :hover="true" animation="pulse"/>
-      </span>
+      <DestroyNote :note="note"/>
     </div>
   </Card>
 </template>
@@ -29,9 +27,5 @@ const noteDate = computed(() => {
 .bottom {
   display: flex;
   justify-content: space-between;
-}
-
-.bottom .icon {
-  cursor: pointer;
 }
 </style>

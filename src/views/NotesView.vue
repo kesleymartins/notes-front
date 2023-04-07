@@ -2,20 +2,14 @@
 import Note from '../components/Notes/Note.vue'
 import NewNote from '../components/Notes/NewNote.vue'
 import { useNotesStore } from '../stores/notes'
-import { onMounted } from 'vue';
-import { useToast } from 'vue-toastification';
+import { onMounted } from 'vue'
 
 const notesStore = useNotesStore()
-const toast = useToast()
 
 onMounted(() => {
   notesStore.fetchNotes()
 })
 
-const onRemoveNote = (note) => {
-  notesStore.destroyNote(note)
-  toast.success('Nota removida!')
-}
 </script>
 
 <template>
@@ -27,10 +21,7 @@ const onRemoveNote = (note) => {
 
   <main class="main container">
     <div class="cards">
-      <Note v-for="note in notesStore.notes" :key="note.id"
-        :note="note"
-        @remove="onRemoveNote(note)"
-      />
+      <Note v-for="note in notesStore.notes" :key="note.id" :note="note" />
     </div>
   </main>
 </template>
