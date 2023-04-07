@@ -23,11 +23,23 @@ const onAddNote = () => {
 
 <template>
   <Modal :show="showModal" @close="toggleModal">
-    <textarea class="textarea" cols="15" rows="4" v-model="newNote"></textarea>
-
-    <template #action>
-      <button class="add-button" @click="onAddNote">Add Note</button>
+    <template #icon>
+      <v-icon name="co-notes" scale="1.5"></v-icon>
     </template>
+
+    <template #title>
+      Nova Nota
+    </template>
+
+    <form class="form">
+      <div class="field">
+        <textarea class="textarea" rows="4" v-model="newNote"></textarea>
+      </div>
+
+      <div class="buttons">
+        <button class="add-button" @click="onAddNote">Adicionar</button>
+      </div>
+    </form>
   </Modal>
 
   <button class="new-button" @click="toggleModal">+</button>
@@ -54,18 +66,34 @@ const onAddNote = () => {
 }
 
 .add-button {
-  width: 100%;
   padding: 1em;
-  border: none;
-  text-align: center;
-  margin: 0 1px;
-  background-color: lightskyblue;
-}
-
-.add-button:hover {
-  background-color: rgb(85, 171, 224);
-  color: white;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: whitesmoke;
+  color: black;
+  font-weight: 600;
   cursor: pointer;
 }
 
+.add-button:hover {
+  background-color: black;
+  color: whitesmoke;
+
+}
+
+/* --- form --- */
+.form textarea {
+  width: 100%;
+  resize: none;
+}
+
+.form .field {
+  width: 100%;
+}
+
+.form .buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1em 0 0 0;
+}
 </style>

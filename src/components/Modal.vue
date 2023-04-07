@@ -5,7 +5,7 @@ const props = defineProps({
 
 const emit = defineEmits(['close'])
 
-const onClose = () => {
+const closeModal = () => {
   emit('close')
 }
 </script>
@@ -13,11 +13,22 @@ const onClose = () => {
 <template>
   <div class="overlay" v-if="show">
     <div class="modal">
-      <slot></slot>
+      <div class="modal-header">
+        <slot name="icon"></slot>
 
-      <div class="buttons">
-        <span class="button close" @click="onClose">Close</span>
-        <slot name="action"></slot>
+        <h2>
+          <slot name="title"></slot>
+        </h2>
+
+        <div class="icon" @click="closeModal">
+          <v-icon name="io-close-circle-sharp" scale="1.3"></v-icon>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="modal-content">
+        <slot></slot>
       </div>
     </div>
   </div>
@@ -27,8 +38,8 @@ const onClose = () => {
 
 .overlay {
   position: absolute;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.77);
   position: absolute;
   top: 0;
@@ -45,41 +56,18 @@ const onClose = () => {
   border-radius: 10px;
   padding: 1em;
   position: relative;
+}
+
+.modal-header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
 }
 
-.modal .buttons {
-  display: flex;
-  margin: 1em 0 0 0;
+.modal-header h2 {
+  font-size: 2em;
 }
 
-.modal .button {
-  width: 100%;
-  padding: 1em;
-  border: none;
-  text-align: center;
-  margin: 0 1px;
-}
-
-.button.add {
-  background-color: lightskyblue;
-}
-
-.button.close {
-  background-color: lightcoral;
-}
-
-.button:hover {
-  color: white;
+.modal-header .icon {
   cursor: pointer;
-}
-
-.button.add:hover {
-  background-color: rgb(85, 171, 224);
-}
-
-.button.close:hover {
-  background-color: rgb(245, 98, 98);
 }
 </style>
