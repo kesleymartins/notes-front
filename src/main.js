@@ -5,9 +5,9 @@ import App from './App.vue'
 import './assets/reset.css'
 
 import { OhVueIcon, addIcons } from "oh-vue-icons"
-import { MdDelete } from "oh-vue-icons/icons";
+import { MdDelete, IoCloseCircleSharp, CoNotes } from "oh-vue-icons/icons";
 
-addIcons(MdDelete)
+addIcons(MdDelete, IoCloseCircleSharp, CoNotes)
 
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
