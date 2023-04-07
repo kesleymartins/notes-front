@@ -22,6 +22,14 @@ export const useNotesStore = defineStore('notes', {
       .then(res => {
         this.notes.push(res.data)
       })
+    },
+    destroyNote(note) {
+      api.delete(`/notes/${note.id}`)
+      .then(res => {
+        this.notes = this.notes.filter(n => {
+          return n.id != note.id
+        })
+      })
     }
   }
 })
