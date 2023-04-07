@@ -20,7 +20,10 @@ onMounted(() => {
 
   <main class="main container">
     <div class="cards">
-      <Note v-for="note in notesStore.notes" :key="note.id" :note="note" />
+      <Note v-for="note in notesStore.notes" :key="note.id"
+        :note="note"
+        @remove="notesStore.destroyNote(note)"
+      />
     </div>
   </main>
 </template>
