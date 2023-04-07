@@ -8,14 +8,12 @@
 
 <style scoped>
 .card {
-  width: 20%;
   height: 200px;
   padding: 10px;
-  border-radius: 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-right: 1em;
-  margin-bottom: 20px;
+  border-radius: 15px;
+  box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
 }
 </style>
