@@ -1,20 +1,9 @@
 <script setup>
-import { ref } from 'vue';
-import { useToast } from 'vue-toastification'
-import { useNotesStore } from '../../stores/notes'
+import { ref } from 'vue'
 import Card from '../Card.vue'
+import NoteForm from './NoteForm.vue'
 
-const newNote = ref('')
-const notesStore = useNotesStore()
-const toast = useToast()
 const showNoteForm = ref(false)
-
-const onAddNote = () => {
-  notesStore.addNote(newNote)
-  toggleNoteForm()
-  newNote.value = ""
-  toast.success('Nota criada com sucesso!')
-}
 
 const toggleNoteForm = () => {
   showNoteForm.value = !showNoteForm.value
@@ -24,11 +13,7 @@ const toggleNoteForm = () => {
 <template>
   <Card>
     <template #header>
-      <form class="form" v-if="showNoteForm">
-        <div class="field">
-          <textarea v-model="newNote" rows="6" v-on:keyup.enter="onAddNote"></textarea>
-        </div>
-      </form>
+      <NoteForm v-if="showNoteForm" @created="toggleNoteForm"/>
     </template>
 
     <template #middle>
@@ -42,21 +27,5 @@ const toggleNoteForm = () => {
 <style scoped>
 .icon {
   cursor: pointer;
-}
-
-.field textarea {
-  font-size: 1.2em;
-  resize: none;
-  border: none;
-  width: 100%;
-}
-
-.form {
-  height: 100%;
-}
-
-.field textarea:focus {
-  outline: 0;
-
 }
 </style>
