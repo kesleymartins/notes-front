@@ -6,6 +6,10 @@
       <slot name="header"></slot>
     </div>
 
+    <div class="card-middle">
+      <slot name="middle"></slot>
+    </div>
+
     <div class="card-bottom">
       <slot></slot>
     </div>
@@ -25,6 +29,10 @@
 .card-content {
   font-family: 'Helvetica';
   text-transform: capitalize;
+}
+
+.card-middle {
+  margin: 0 auto;
 }
 
 .card-bottom {
