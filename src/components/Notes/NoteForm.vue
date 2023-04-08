@@ -2,30 +2,49 @@
 import { onMounted, ref } from 'vue';
 import { useNotesStore } from '../../stores/notes'
 import { useToast } from 'vue-toastification'
+import { object, string } from "yup"
 
 const emit = defineEmits(['created'])
 
-const newNote = ref('')
-const contentInput = ref(null)
+const noteFormSchema = object({
+  content: string().required()
+})
+
+const noteData = ref({
+  content: ''
+})
+
+const contentTextarea = ref(null)
 const notesStore = useNotesStore()
 const toast = useToast()
 
 const onAddNote = () => {
-  notesStore.addNote(newNote)
-  newNote.value = ""
-  toast.success('Nota criada com sucesso!')
-  emit('created')
+  cleanNoteContent()
+
+  try {
+    noteFormSchema.validateSync(noteData.value);
+
+    notesStore.addNote(noteData.value)
+    toast.success('Nota criada com sucesso!')
+    emit('created')
+  } catch (error) {
+    toast.info('Conteudo da nota não pode ficar vazio!')
+  }
+}
+
+const cleanNoteContent = () => {
+  noteData.value.content = noteData.value.content.replace(/[\r\n]+/gm, "");
 }
 
 onMounted(() => {
-  contentInput.value.focus()
+  contentTextarea.value.focus()
 })
 </script>
 
 <template>
   <form class="form">
     <div class="field">
-      <textarea ref="contentInput" v-model="newNote" rows="6" v-on:keyup.enter="onAddNote"></textarea>
+      <textarea ref="contentTextarea" v-model="noteData.content" rows="6" v-on:keydown.enter="onAddNote"></textarea>
     </div>
   </form>
 </template>
