@@ -1,11 +1,12 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useNotesStore } from '../../stores/notes'
 import { useToast } from 'vue-toastification'
 
 const emit = defineEmits(['created'])
 
 const newNote = ref('')
+const contentInput = ref(null)
 const notesStore = useNotesStore()
 const toast = useToast()
 
@@ -15,12 +16,16 @@ const onAddNote = () => {
   toast.success('Nota criada com sucesso!')
   emit('created')
 }
+
+onMounted(() => {
+  contentInput.value.focus()
+})
 </script>
 
 <template>
   <form class="form">
     <div class="field">
-      <textarea v-model="newNote" rows="6" v-on:keyup.enter="onAddNote"></textarea>
+      <textarea ref="contentInput" v-model="newNote" rows="6" v-on:keyup.enter="onAddNote"></textarea>
     </div>
   </form>
 </template>
