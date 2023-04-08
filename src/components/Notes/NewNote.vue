@@ -1,101 +1,62 @@
 <script setup>
 import { ref } from 'vue';
-import Modal from '../Modal.vue'
 import { useToast } from 'vue-toastification'
 import { useNotesStore } from '../../stores/notes'
+import Card from '../Card.vue'
 
-const showModal = ref(false)
 const newNote = ref('')
 const notesStore = useNotesStore()
 const toast = useToast()
-
-const toggleModal = () => {
-  showModal.value = !showModal.value
-}
+const showNoteForm = ref(false)
 
 const onAddNote = () => {
   notesStore.addNote(newNote)
-  toggleModal()
+  toggleNoteForm()
   newNote.value = ""
   toast.success('Nota criada com sucesso!')
+}
+
+const toggleNoteForm = () => {
+  showNoteForm.value = !showNoteForm.value
 }
 </script>
 
 <template>
-  <Modal :show="showModal" @close="toggleModal">
-    <template #icon>
-      <v-icon name="co-notes" scale="1.5"></v-icon>
+  <Card>
+    <template #header>
+      <form class="form" v-if="showNoteForm">
+        <div class="field">
+          <textarea v-model="newNote" rows="6" v-on:keyup.enter="onAddNote"></textarea>
+        </div>
+      </form>
     </template>
 
-    <template #title>
-      Nova Nota
+    <template #middle>
+      <div class="icon" @click="toggleNoteForm" v-if="!showNoteForm">
+        <v-icon name="bi-plus-square" scale="1.5" :hover="false" animation="pulse" speed="slow"></v-icon>
+      </div>
     </template>
-
-    <form class="form">
-      <div class="field">
-        <textarea class="textarea" rows="4" v-model="newNote"></textarea>
-      </div>
-
-      <div class="buttons">
-        <button class="add-button" @click="onAddNote">Adicionar</button>
-      </div>
-    </form>
-  </Modal>
-
-  <button class="new-button" @click="toggleModal">+</button>
+  </Card>
 </template>
 
 <style scoped>
-.new-button {
-  padding: 1em;
-  width: 50px;
-  height: 50px;
-  border-radius: 100%;
-  border: none;
-  background-color: #313b4b;
-  border: 2px solid #313b4b;
-  color: white;
-  transition: 0.4s;
-}
-
-.new-button:hover {
-  background-color: white;
-  color: black;
-  transition: 0.4s;
+.icon {
   cursor: pointer;
 }
 
-.add-button {
-  padding: 1em;
-  border: 2px solid black;
-  border-radius: 10px;
-  background-color: whitesmoke;
-  color: black;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.add-button:hover {
-  background-color: black;
-  color: whitesmoke;
-
-}
-
-/* --- form --- */
-.form textarea {
-  width: 98%;
+.field textarea {
+  font-size: 1.2em;
   resize: none;
-  display: block;
-  margin: 0 auto;
-}
-
-.form .field {
+  border: none;
   width: 100%;
 }
 
-.form .buttons {
-  display: flex;
-  justify-content: flex-end;
-  margin: 1em 0 0 0;
+.form {
+  height: 100%;
+}
+
+.field textarea:focus {
+  outline: 0;
+
 }
 </style>
