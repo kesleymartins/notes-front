@@ -2,18 +2,32 @@
 import { ref } from 'vue'
 import Card from '../Card.vue'
 import NoteForm from './NoteForm.vue'
+import { useNotesStore } from '../../stores/notes'
+import { useToast } from 'vue-toastification'
 
 const showNoteForm = ref(false)
+const noteStore = useNotesStore()
+const toast = useToast()
+
+const noteData = ref({
+  content: ''
+})
 
 const toggleNoteForm = () => {
   showNoteForm.value = !showNoteForm.value
+}
+
+const onSubmit = () => {
+  noteStore.addNote(noteData.value)
+  toast.success('Nota criada com sucesso!')
+  toggleNoteForm()
 }
 </script>
 
 <template>
   <Card>
     <template #header>
-      <NoteForm v-if="showNoteForm" @created="toggleNoteForm"/>
+      <NoteForm v-if="showNoteForm" :noteData="noteData" @submit="onSubmit"/>
     </template>
 
     <template #middle>

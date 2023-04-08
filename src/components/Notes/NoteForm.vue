@@ -1,39 +1,31 @@
 <script setup>
 import { onMounted, ref } from 'vue';
-import { useNotesStore } from '../../stores/notes'
 import { useToast } from 'vue-toastification'
 import { object, string } from "yup"
 
-const emit = defineEmits(['created'])
+const emit = defineEmits(['submit'])
+const props = defineProps(['noteData'])
 
 const noteFormSchema = object({
-  content: string().required()
-})
-
-const noteData = ref({
-  content: ''
+  content: string().required().trim()
 })
 
 const contentTextarea = ref(null)
-const notesStore = useNotesStore()
 const toast = useToast()
 
 const onAddNote = () => {
-  cleanNoteContent()
-
   try {
-    noteFormSchema.validateSync(noteData.value);
-
-    notesStore.addNote(noteData.value)
-    toast.success('Nota criada com sucesso!')
-    emit('created')
+    noteFormSchema.validateSync(props.noteData);
+    emit('submit')
   } catch (error) {
     toast.info('Conteudo da nota não pode ficar vazio!')
   }
+
+  cleanNoteData()
 }
 
-const cleanNoteContent = () => {
-  noteData.value.content = noteData.value.content.replace(/[\r\n]+/gm, "");
+const cleanNoteData = () => {
+  props.noteData.content = ''
 }
 
 onMounted(() => {
