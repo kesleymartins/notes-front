@@ -20,7 +20,7 @@ export const useNotesStore = defineStore('notes', {
 
       api.post('/notes', note)
       .then(res => {
-        this.notes.push(res.data)
+        this.notes.unshift(res.data)
       })
     },
     destroyNote(note) {
