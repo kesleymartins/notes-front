@@ -14,7 +14,7 @@ export const useNotesStore = defineStore('notes', {
     },
     addNote(newNote) {
       const note = {
-        content: newNote.value,
+        content: newNote.content,
         background_color: `hsl(${Math.random() * 360}, 50%, 75%)`
       }
 
