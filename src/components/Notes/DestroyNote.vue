@@ -14,7 +14,7 @@ const onDestroy = () => {
 
 <template>
   <span class="icon" @click="onDestroy">
-    <v-icon name="md-delete" :hover="true" animation="pulse"/>
+    <v-icon name="md-delete" :hover="true" animation="pulse" scale="1.2"/>
   </span>
 </template>
 
