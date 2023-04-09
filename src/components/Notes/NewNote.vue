@@ -9,16 +9,12 @@ const showNoteForm = ref(false)
 const noteStore = useNotesStore()
 const toast = useToast()
 
-const noteData = ref({
-  content: ''
-})
-
-const toggleNoteForm = () => {
+function toggleNoteForm() {
   showNoteForm.value = !showNoteForm.value
 }
 
-const onSubmit = () => {
-  noteStore.addNote(noteData.value)
+function onSubmit(newNote) {
+  noteStore.addNote(newNote)
   toast.success('Nota criada com sucesso!')
   toggleNoteForm()
 }
@@ -27,7 +23,7 @@ const onSubmit = () => {
 <template>
   <Card>
     <template #header>
-      <NoteForm v-if="showNoteForm" :noteData="noteData" @submit="onSubmit"/>
+      <NoteForm v-if="showNoteForm" @submit="onSubmit"/>
     </template>
 
     <template #middle>
