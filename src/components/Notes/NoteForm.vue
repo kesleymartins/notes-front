@@ -55,6 +55,7 @@ function onAction() {
   resize: none;
   border: none;
   width: 100%;
+  background: transparent;
 }
 
 .field textarea:focus {
