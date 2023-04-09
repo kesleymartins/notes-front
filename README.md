@@ -1,29 +1,46 @@
-# vue-notes
+# Notes App - Frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+#### Tecnologias
 
-## Recommended IDE Setup
+---
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+[axios](https://github.com/axios/axios)
 
-## Customize configuration
+[oh-vue-icons](https://github.com/Renovamen/oh-vue-icons)
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+[pinia](https://github.com/vuejs/pinia)
 
-## Project Setup
+[vue-toastification](https://github.com/Maronato/vue-toastification)
 
+[yup](https://github.com/jquense/yup)
+
+
+
+#### Endpoints
+---
 ```sh
+# GET /notes
+retorna lista de notas
+
+# POST /notes/:id
+cria uma nota
+
+# PUT /notes/:id
+atualiza uma nota e retorna lista atualizada
+
+# DELETE /notes/:id
+remote uma nota
+```
+
+
+
+#### Configuração do projeto
+
+---
+```sh
+# Instala as dependências
 npm install
-```
 
-### Compile and Hot-Reload for Development
-
-```sh
+# Abre o servidor
 npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
 ```
