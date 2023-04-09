@@ -23,6 +23,18 @@ export const useNotesStore = defineStore('notes', {
         this.notes.unshift(res.data)
       })
     },
+    updateNote(noteId, updatedNote) {
+      api.put(`/notes/${noteId}`, updatedNote)
+      .then(() => {
+        this.notes = this.notes.map(n => {
+          if (n.id == noteId) {
+            n.content = updatedNote.content
+          }
+
+          return n
+        })
+      })
+    },
     destroyNote(note) {
       api.delete(`/notes/${note.id}`)
       .then(res => {
