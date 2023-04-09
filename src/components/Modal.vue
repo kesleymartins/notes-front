@@ -14,7 +14,7 @@ const closeModal = () => {
   <div class="overlay" v-if="show">
     <div class="modal">
       <div class="modal-header">
-        <slot name="icon"></slot>
+        <slot name="action-icon"></slot>
 
         <h2>
           <slot name="title"></slot>
@@ -65,9 +65,5 @@ const closeModal = () => {
 
 .modal-header h2 {
   font-size: 2em;
-}
-
-.modal-header .icon {
-  cursor: pointer;
 }
 </style>

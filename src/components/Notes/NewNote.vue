@@ -27,15 +27,11 @@ function onSubmit(newNote) {
     </template>
 
     <template #middle>
-      <div class="icon" @click="toggleNoteForm" v-if="!showNoteForm">
+      <div class="action-icon" @click="toggleNoteForm" v-if="!showNoteForm">
         <v-icon name="bi-plus-square" scale="1.5" :hover="false" animation="pulse" speed="slow"></v-icon>
       </div>
     </template>
   </Card>
 </template>
 
-<style scoped>
-.icon {
-  cursor: pointer;
-}
-</style>
+<style scoped></style>

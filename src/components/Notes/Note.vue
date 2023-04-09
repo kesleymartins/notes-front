@@ -37,8 +37,8 @@ function updateNote(updatedNote) {
 
     <span>{{ noteDate }}</span>
 
-    <div class="icons">
-      <span class="icon" @click="toggleShowForm">
+    <div>
+      <span class="action-icon" @click="toggleShowForm">
         <v-icon name="fa-regular-edit" :hover="true" animation="pulse" scale="1.2"></v-icon>
       </span>
       <DestroyNote :note="note"/>
@@ -46,8 +46,4 @@ function updateNote(updatedNote) {
   </Card>
 </template>
 
-<style scoped>
-.icon {
-  cursor: pointer
-}
-</style>
+<style scoped></style>
