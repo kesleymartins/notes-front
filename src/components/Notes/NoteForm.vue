@@ -51,7 +51,6 @@ function onAction() {
 }
 
 .field textarea {
-  font-size: 1.2em;
   resize: none;
   border: none;
   width: 100%;

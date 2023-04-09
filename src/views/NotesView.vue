@@ -44,7 +44,6 @@ onMounted(() => {
 
 .header .title {
   font-size: 3em;
-  font-family: 'Helvetica';
   font-weight: bolder;
 }
 

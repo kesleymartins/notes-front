@@ -27,7 +27,6 @@
 }
 
 .card-content {
-  font-family: 'Helvetica';
   text-transform: capitalize;
 }
 
