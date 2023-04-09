@@ -3,6 +3,7 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 
 import './assets/reset.css'
+import './assets/global.css'
 
 import { OhVueIcon, addIcons } from "oh-vue-icons"
 import {
