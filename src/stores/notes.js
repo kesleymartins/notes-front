@@ -25,10 +25,10 @@ export const useNotesStore = defineStore('notes', {
     },
     updateNote(noteId, updatedNote) {
       api.put(`/notes/${noteId}`, updatedNote)
-      .then(() => {
+      .then(res => {
         this.notes = this.notes.map(n => {
           if (n.id == noteId) {
-            n.content = updatedNote.content
+            return res.data
           }
 
           return n
