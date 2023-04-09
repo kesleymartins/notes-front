@@ -9,14 +9,16 @@ import {
   MdDelete,
   IoCloseCircleSharp,
   CoNotes,
-  BiPlusSquare
+  BiPlusSquare,
+  FaRegularEdit
 } from "oh-vue-icons/icons";
 
 addIcons(
   MdDelete,
   IoCloseCircleSharp,
   CoNotes,
-  BiPlusSquare
+  BiPlusSquare,
+  FaRegularEdit
 )
 
 import Toast from "vue-toastification";
