@@ -14,7 +14,7 @@ const toast = useToast()
 
 const noteDate = computed(() => {
   const date = new Date(props.note.created_at)
-  return `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`
+  return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`
 })
 
 function toggleShowForm() {
